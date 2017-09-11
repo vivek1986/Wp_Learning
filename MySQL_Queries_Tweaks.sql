@@ -34,6 +34,7 @@ SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',9),':',-1) AS fieldname5,
 SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',10),':',-1) AS fieldvalue5
 FROM table;
 
+-- Example serialized string 2 :- a:3:{s:7:"address";s:29:"Melbourne VIC 3004, Australia";s:3:"lat";s:18:"-37.80754617047211";s:3:"lng";s:18:"144.95670318603516";}
 SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(meta_value,';',4),':',-1) AS latitude
   FROM wp481_postmeta
   WHERE meta_key = 'location'
