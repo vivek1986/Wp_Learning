@@ -9,6 +9,7 @@ AND c.meta_key= "geo_address"
 AND a.post_id = b.post_id
 AND a.post_id = c.post_id
 
+-- OR
 set @latitude = xxx; — center latitude
 set @longitude = xxx; — center longitude
 set @distance = xx; — search distance
