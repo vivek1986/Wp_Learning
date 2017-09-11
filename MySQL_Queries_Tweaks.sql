@@ -19,3 +19,17 @@ from wp_posts p
 left join wp_postmeta latitude on latitude.post_id = p.ID and latitude.meta_key = ‘_latitude’
 left join wp_postmeta longitude on longitude.post_id = p.ID and longitude.meta_key = ‘_longitude’
 having distance < @distance;
+
+-- Unserialize through MySQL without PHP
+-- Example serialized string :- a:5:{s:9:"invoiceid";s:1:"8";s:8:"balance";i:5;s:14:"broughtforward";i:3;s:6:"userid";s:5:"13908";s:10:"customerid";s:1:"3";}
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',1),':',-1) AS fieldname1,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',2),':',-1) AS fieldvalue1,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',3),':',-1) AS fieldname2,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',4),':',-1) AS fieldvalue2,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',5),':',-1) AS fieldname3,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',6),':',-1) AS fieldvalue3,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',7),':',-1) AS fieldname4,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',8),':',-1) AS fieldvalue4,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',9),':',-1) AS fieldname5,
+SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',10),':',-1) AS fieldvalue5
+FROM table;
