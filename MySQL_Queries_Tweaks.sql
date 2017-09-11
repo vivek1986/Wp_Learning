@@ -34,4 +34,7 @@ SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',9),':',-1) AS fieldname5,
 SUBSTRING_INDEX(SUBSTRING_INDEX(old_data,';',10),':',-1) AS fieldvalue5
 FROM table;
 
-SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(location,';',4),':',-1) AS latitude FROM wp481_postmeta;
+SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(meta_value,';',4),':',-1) AS latitude
+  FROM wp481_postmeta
+  WHERE meta_key = 'location'
+    AND post_id = 6;
